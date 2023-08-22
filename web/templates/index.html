@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeviA'nts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">DeviA'nts</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Главная<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#forms">Задать вопрос модели</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <h1 class="display-4">Задайте свой вопрос модели</h1>
+            <h1 class="display-5">RobertaBaseSquad2</h1>
+            <a href="#forms" class="btn btn-primary btn-lg">Задать вопрос</a>
+        </div>
+    </header>
+
+    <section id="forms" class="py-5">
+      <div class="container mt-5">
+          <h1 class="text-center">Задать вопрос модели</h1>
+          <div class="mt-4">
+              <form method="POST">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <label class="h4" for="question">Вопрос</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name='question' rows="2">{{ form.question.value }}</textarea>
+                  </div>
+                  <div class="form-group">
+                      <label class="h4" for='context'>Контекст</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea2" name='context' rows="7">{{ form.context.value}}</textarea>
+                    </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg">Задать вопрос</button>
+                  </div>
+              </form>
+          </div>
+          <div class="mt-4">
+                <div class="form-group">
+                  <label class="h4" for='answer'>Ответ модели</label>
+                  <textarea class="form-control" name="answer" rows="3" readonly>{{ answer }}</textarea>
+                </div>
+          </div>
+      </div>
+  </section>
+    
+    <section id="about" class="py-5">
+      <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="d-flex flex-column justify-content-center h-100">
+                    <h2 class="pb-3">O нас</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique nec libero ut venenatis.
+                        Vivamus et sapien nec massa dapibus commodo. Proin non justo sed dolor vestibulum tincidunt.
+                        Curabitur malesuada aliquam orci, ut mattis quam blandit in.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-center justify-content-center h-100">
+                  <img src="{% static "img/logo.jpg" %}" alt="About Us" class="img-fluid rounded-circle">
+              </div>
+          </div>
+        </div>
+    </div>
+    </section>
+
+ 
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 DeviA'nts. All rights reserved.</p>
+    </footer>
+</body>
+</html>
